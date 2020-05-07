@@ -60,14 +60,14 @@
         kubecontext: "{{ item.k8s.context }}"
       with_items: "{{ network.organizations }}"
       when: "item.cloud_provider == 'aws'"
-    - include_role:
-        name: setup/tiller
-      vars:
-        kubeconfig_path: "{{ data.k8s.config_file }}"
-        kubecontext: "{{ data.k8s.context }}"
-      with_items: "{{ network.organizations }}"
-      loop_control:
-        loop_var: data
+    # - include_role:
+    #     name: setup/tiller
+    #   vars:
+    #     kubeconfig_path: "{{ data.k8s.config_file }}"
+    #     kubecontext: "{{ data.k8s.context }}"
+    #   with_items: "{{ network.organizations }}"
+    #   loop_control:
+    #     loop_var: data
     vars: #These variables can be overriden from the command line
       privilege_escalate: false           #Default to NOT escalate to root privledges
       install_os: "linux"                 #Default to linux OS
