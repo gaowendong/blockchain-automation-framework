@@ -1,4 +1,4 @@
-FROM hyperledgerlabs/blockchain-linuxkit:latest
+FROM hyperledgerlabs/blockchain-darwinkit:latest
 LABEL VENDOR="Hyperledger" \
       MAINTAINER="Hyperledger"
 EXPOSE 8080
@@ -8,7 +8,7 @@ EXPOSE 8080
 #ENV NMS_PORT=8080
 #ENV NMS_DB=db
 #ENV NMS_MONGO_CONNECTION_STRING=mongodb://localhost:27017
-#ENV NMS_MONGOD_LOCATION=/opt/networkmap/mongodb-linux-x86_64-amazon2-4.0.4/bin/mongod
+#ENV NMS_MONGOD_LOCATION=/opt/networkmap/mongodb-darwin-x86_64-amazon2-4.0.4/bin/mongod
 WORKDIR /opt/networkmap
 RUN mkdir -p /opt/networkmap/db /opt/networkmap/logs /home/networkmap \
   && addgroup networkmap \

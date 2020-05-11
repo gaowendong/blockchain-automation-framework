@@ -15,5 +15,5 @@
 
 
 mkdir -p ${NETWORKMAP_DB}/mongo
-./mongodb-linux-x86_64-amazon2-4.0.4/bin/mongod -dbpath ${NETWORKMAP_DB}/mongo &
+./mongodb-darwin-x86_64-amazon2-4.0.4/bin/mongod -dbpath ${NETWORKMAP_DB}/mongo &
 java -jar /opt/workdir/network-map.jar

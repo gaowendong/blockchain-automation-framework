@@ -439,10 +439,10 @@
       </properties>
     </profile>
     <profile>
-      <id>linux</id>
+      <id>darwin</id>
       <activation>
         <os>
-          <family>linux</family>
+          <family>darwin</family>
         </os>
       </activation>
       <properties>
