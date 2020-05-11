@@ -90,7 +90,7 @@ spec:
               jq -r 'if .errors then . else . end')
           validateVaultResponse "secret (${vault_secret_key})" "${LOOKUP_SECRET_RESPONSE}"
           VALUE_OF_SECRET=$(echo ${LOOKUP_SECRET_RESPONSE} | jq -r ".data[\"${vault_data_key}\"]")
-          echo "${VALUE_OF_SECRET}" >> /etc/hyperledger/fabric-ca-server-config/server.key
+          echo "${VALUE_OF_SECRET}" >> ${MOUNT_PATH}/server.key
 
 
           SECRET_ADMIN_PASS={{ $.Values.vault.secretadminpass }}
@@ -101,7 +101,7 @@ spec:
           ${VAULT_ADDR}/v1/${vault_secret_key} | jq -r 'if .errors then . else . end')
           validateVaultResponse "secret (${vault_secret_key})" "${LOOKUP_SECRET_RESPONSE}"
           VALUE_OF_SECRET=$(echo ${LOOKUP_SECRET_RESPONSE} | jq -r ".data[\"${vault_data_key}\"]")
-          echo "${VALUE_OF_SECRET}" >> /etc/hyperledger/fabric-ca-server-config/user_cred
+          echo "${VALUE_OF_SECRET}" >> ${MOUNT_PATH}/user_cred
 
 
         volumeMounts:
@@ -115,7 +115,7 @@ spec:
       containers:
       - name: ca
         image: {{ $.Values.metadata.images.ca }}
-        command: ["sh", "-c", "sleep 1 && fabric-ca-server start -b {{ $.Values.server.admin }}:`cat /etc/hyperledger/fabric-ca-server-config/user_cred` -d"]
+        command: ["sh", "-c", "sleep 1 && fabric-ca-server start -b {{ $.Values.server.admin }}:supplychain-adminpw -d"]
         ports:
         - containerPort: 7054
         env:
@@ -140,6 +140,6 @@ spec:
         volumeMounts:
         - name: certificates
           mountPath: /etc/hyperledger/fabric-ca-server-config
-          readOnly: true
+          readOnly: false
         - name: ca-server-db
           mountPath: /var/hyperledger/fabric-ca-server/db/
