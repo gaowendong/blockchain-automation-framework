@@ -79,7 +79,7 @@ spec:
               jq -r 'if .errors then . else . end')
           validateVaultResponse "secret (${vault_secret_key})" "${LOOKUP_SECRET_RESPONSE}"
           VALUE_OF_SECRET=$(echo ${LOOKUP_SECRET_RESPONSE} | jq -r ".data[\"${vault_data_key}\"]")
-          echo "${VALUE_OF_SECRET}" >> ${MOUNT_PATH}/server.crt
+          echo "${VALUE_OF_SECRET}" >> /etc/hyperledger/fabric-ca-server-config/server.crt
 
           SECRET_KEY={{ $.Values.vault.secretkey }}
           vault_secret_key=$(echo ${SECRET_KEY} |awk -F "?" '{print $1}')
@@ -90,7 +90,7 @@ spec:
               jq -r 'if .errors then . else . end')
           validateVaultResponse "secret (${vault_secret_key})" "${LOOKUP_SECRET_RESPONSE}"
           VALUE_OF_SECRET=$(echo ${LOOKUP_SECRET_RESPONSE} | jq -r ".data[\"${vault_data_key}\"]")
-          echo "${VALUE_OF_SECRET}" >> ${MOUNT_PATH}/server.key
+          echo "${VALUE_OF_SECRET}" >> /etc/hyperledger/fabric-ca-server-config/server.key
 
 
           SECRET_ADMIN_PASS={{ $.Values.vault.secretadminpass }}
@@ -101,7 +101,7 @@ spec:
           ${VAULT_ADDR}/v1/${vault_secret_key} | jq -r 'if .errors then . else . end')
           validateVaultResponse "secret (${vault_secret_key})" "${LOOKUP_SECRET_RESPONSE}"
           VALUE_OF_SECRET=$(echo ${LOOKUP_SECRET_RESPONSE} | jq -r ".data[\"${vault_data_key}\"]")
-          echo "${VALUE_OF_SECRET}" >> ${MOUNT_PATH}/user_cred
+          echo "${VALUE_OF_SECRET}" >> /etc/hyperledger/fabric-ca-server-config/user_cred
 
 
         volumeMounts:
