@@ -45,6 +45,7 @@
 # This task copy the CA certificates generated above, to the Vault
 - name: Copy the crypto material to Vault
   shell: |
+    vault secrets enable -path=secret kv
     vault write secret/crypto/{{ component_type }}Organizations/{{ component_name }}/ca ca.{{ component_name }}-cert.pem="$(cat "./build/crypto-config/{{ component_type }}Organizations/{{ component_name }}/ca/ca.{{ component_name }}-cert.pem")" {{ component_name }}-CA.key="$(cat "./build/crypto-config/{{ component_type }}Organizations/{{ component_name }}/ca/{{ component_name }}-CA.key")"
   environment:
     VAULT_ADDR: "{{ vault.url }}"

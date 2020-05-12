@@ -5,7 +5,7 @@
   include_role:
     name: "../../shared/configuration/roles/check/helm_component"
   vars:
-    component_type: "Job"
+    component_type: "OneTimeJob"
     component_name: "anchorpeer-{{ channel.channel_name | lower }}-{{ name }}"
   loop: "{{ network.channels }}"
   loop_control:

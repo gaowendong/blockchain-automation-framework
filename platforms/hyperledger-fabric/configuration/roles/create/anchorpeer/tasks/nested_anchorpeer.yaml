@@ -6,7 +6,7 @@
   include_role:
     name: "../../shared/configuration/roles/check/helm_component"
   vars:
-    component_type: "Job"
+    component_type: "OneTimeJob"
     namespace: "{{ participant.name | lower}}-net"
     component_name: "joinchannel-{{ peer.name }}-{{ channel_name }}"
     kubernetes: "{{ org.k8s }}"

@@ -101,7 +101,7 @@
     # You can continue if the CA-server pods are running for more than 5 minutes
     - pause:
         prompt: "Sleeping... so that the client certificates are valid"
-        minutes: 6
+        minutes: 1
 
     # Create Organization crypto materials for new organization
     - include_role:
@@ -184,12 +184,12 @@
       loop: "{{ network['channels'] }}"
 
     # delete build directory
-    - name: Remove build directory
-      file:
-        path: "./build"
-        state: absent
+    # - name: Remove build directory
+    #   file:
+    #     path: "./build"
+    #     state: absent
   vars: #These variables can be overriden from the command line
     privilege_escalate: false           #Default to NOT escalate to root privledges
-    install_os: "linux"                 #Default to linux OS
+    install_os: "darwin"                 #Default to linux OS
     install_arch:  "amd64"              #Default to amd64 architecture
     bin_install_dir:  "~/bin"            #Default to /bin install directory for binaries
