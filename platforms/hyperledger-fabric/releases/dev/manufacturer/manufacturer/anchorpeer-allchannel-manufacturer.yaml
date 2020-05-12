@@ -39,5 +39,5 @@ spec:
     orderer:
       address: orderer1.supplychain-net:7050
     anchorstx: |-
-      
+      CqwCChAKDggCIgphbGxjaGFubmVsEpcCCpQCCgphbGxjaGFubmVsEl8SXQoLQXBwbGljYXRpb24STggBEkIKD21hbnVmYWN0dXJlck1TUBIvGgcKA01TUBIAIgsKB1JlYWRlcnMSACILCgdXcml0ZXJzEgAiCgoGQWRtaW5zEgAqBkFkbWlucxqkARKhAQoLQXBwbGljYXRpb24SkQEIARKEAQoPbWFudWZhY3R1cmVyTVNQEnEIARoHCgNNU1ASABo2CgtBbmNob3JQZWVycxInEh0KGwoWcGVlcjAubWFudWZhY3R1cmVyLW5ldBCLNxoGQWRtaW5zIgsKB1JlYWRlcnMSACILCgdXcml0ZXJzEgAiCgoGQWRtaW5zEgAqBkFkbWlucyoGQWRtaW5z
 
