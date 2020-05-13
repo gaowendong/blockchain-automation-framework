@@ -27,10 +27,15 @@ spec:
       - name: {{ .Values.nodeName }}
         image: {{ .Values.image.containerName }}
         env:
-          - name: MONGO_INITDB_ROOT_USERNAME_FILE
-            value: /run/secrets/db_root_username
-          - name: MONGO_INITDB_ROOT_PASSWORD_FILE
-            value: /run/secrets/db_root_password
+          # - name: MONGO_INITDB_ROOT_USERNAME_FILE
+          #   value: /run/secrets/db_root_username
+          # - name: MONGO_INITDB_ROOT_PASSWORD_FILE
+          #   value: /run/secrets/db_root_password
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: {{.Values.mongodb.username}}
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: ${MONGODB_PASSWORD}
+
         ports:
         - containerPort: {{ .Values.service.tcp.targetPort }}
         volumeMounts:
