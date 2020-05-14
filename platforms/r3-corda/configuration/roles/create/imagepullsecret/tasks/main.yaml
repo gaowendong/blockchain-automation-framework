@@ -2,7 +2,7 @@
 # This role creates the docker pull registry secret within each namespace
 ##########################################################################################
 - name: "Check for ImagePullSecret for {{ organisation }}"
-  k8s_facts:
+  k8s_info:
     kind: "Secret"
     namespace: "{{ component_ns }}"
     name: "regcred"

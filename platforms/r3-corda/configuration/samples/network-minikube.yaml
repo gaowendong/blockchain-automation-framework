@@ -11,7 +11,7 @@ network:
 
   #Environment section for Kubernetes setup
   env:
-    type: "local"              # tag for the environment. Important to run multiple flux on single cluster
+    type: "dev"              # tag for the environment. Important to run multiple flux on single cluster
     proxy: ambassador               # value has to be 'ambassador' as 'haproxy' has not been implemented for Corda
     ambassadorPorts: 15010,15020    # Any additional Ambassador ports can be given here, must be comma-separated without spaces, this is valid only if proxy='ambassador'
     retry_count: 20                 # Retry count for the checks
@@ -22,19 +22,19 @@ network:
   # Do not check-in docker_password.
   docker:
     url: "index.docker.io/hyperledgerlabs"
-    username: "docker_username"
-    password: "docker_password"
+    username: "kevingwdong"
+    password: "et831221"
   
   # Remote connection information for doorman and networkmap (will be blank or removed for hosting organization)
   orderers:
     - orderer:
       type: doorman
-      uri: http://<MINIKUBE_IP_ADDRESS>:30030
+      uri: http://localhost:30030
       certificate: /home/blockchain-automation-framework/platforms/r3-corda/configuration/build/corda/doorman/tls/ambassador.crt
     - orderer:
       type: networkmap
-      uri: http://<MINIKUBE_IP_ADDRESS>:30040
-      certificate: /home/blockchain-automation-framework/platforms/r3-corda/configuration/build/corda/networkmap/tls/ambassador.crt
+      uri: http://localhost:30040
+      certificate: /Users/kevin_gwdong/blockchainproject/blockchain-automation-framework/platforms/r3-corda/configuration/build/corda/networkmap/tls/ambassador.crt
   
   # Allows specification of one or many organizations that will be connecting to a network.
   # If an organization is also hosting the root of the network (e.g. doorman, membership service, etc),
@@ -56,26 +56,26 @@ network:
       # the cluster has already been created.
       k8s:
         context: "minikube"
-        config_file: "/home/blockchain-automation-framework/build/config"
+        config_file: "/Users/kevin_gwdong/blockchainproject/blockchain-automation-framework/build/kubeconfig.yaml"
 
       # Hashicorp Vault server address and root-token. Vault should be unsealed.
       # Do not check-in root_token
       vault:
-        url: "vault_addr"
-        root_token: "vault_root_token"
+        url: http://0.0.0.0:8200
+        root_token: "s.Fo9EMCERqXXCm2qoxWEs7Fgh"
 
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_ssh: "ssh://git@github.com/<username>/blockchain-automation-framework.git"         # Gitops ssh url for flux value files 
+        git_ssh: "ssh://git@github.com/gaowendong/blockchain-automation-framework.git"         # Gitops ssh url for flux value files 
         branch: "local"           # Git branch where release is being made
         release_dir: "platforms/r3-corda/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
-        username: "git_username"          # Git Service user who has rights to check-in in all branches
-        password: "git_access_token"          # Git Server user password/access token
-        email: "git_email"                # Email to use in git config
-        private_key: "/home/blockchain-automation-framework/build/gitops"          # Path to private key file which has write-access to the git repo
+        git_push_url: "github.com/gaowendong/blockchain-automation-framework.git"   # Gitops https URL for git push 
+        username: "gaowendong"          # Git Service user who has rights to check-in in all branches
+        password: "Kevin198312"          # Git Server user password/access token
+        email: "kevin.gwdong@gmail.com"                # Email to use in git config
+        private_key: "/Users/kevin_gwdong/blockchainproject/blockchain-automation-framework/build/gitops"          # Path to private key file which has write-access to the git repo
 
       # Services maps to the pods that will be deployed on the k8s cluster
       # This sample has doorman, nms and notary on one cluster but different namespaces
@@ -137,26 +137,26 @@ network:
       # the cluster has already been created.
       k8s:
         context: "minikube"
-        config_file: "/home/blockchain-automation-framework/build/config"
+        config_file: "/Users/kevin_gwdong/blockchainproject/blockchain-automation-framework/build/kubeconfig.yaml"
 
       # Hashicorp Vault server address and root-token. Vault should be unsealed.
       # Do not check-in root_token
       vault:
-        url: "vault_addr"
-        root_token: "vault_root_token"
+        url: http://0.0.0.0:8200
+        root_token: "s.Fo9EMCERqXXCm2qoxWEs7Fgh"
 
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_ssh: "ssh://git@github.com/<username>/blockchain-automation-framework.git"         # Gitops ssh url for flux value files 
+        git_ssh: "ssh://git@github.com/gaowendong/blockchain-automation-framework.git"         # Gitops ssh url for flux value files 
         branch: "local"           # Git branch where release is being made
         release_dir: "platforms/r3-corda/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
-        username: "git_username"          # Git Service user who has rights to check-in in all branches
-        password: "git_access_token"      # Git Server user password/access token
-        email: "git_email"                # Email to use in git config
-        private_key: "/home/blockchain-automation-framework/build/gitops"          # Path to private key file which has write-access to the git repo
+        git_push_url: "github.com/gaowendong/blockchain-automation-framework.git"   # Gitops https URL for git push 
+        username: "gaowendong"          # Git Service user who has rights to check-in in all branches
+        password: "Kevin198312"      # Git Server user password/access token
+        email: "kevin.gwdong@gmail.com"                # Email to use in git config
+        private_key: "/Users/kevin_gwdong/blockchainproject/blockchain-automation-framework/build/gitops"          # Path to private key file which has write-access to the git repo
       
       # The participating nodes are named as peers 
       services:
