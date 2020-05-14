@@ -4,7 +4,7 @@ This role checks all auth jobs completing.
 ## Tasks:
 ### 1. Check if Indy  auth job pod for trustee is completed
 This task is waiting until auth job of all trustees of organization are completed.
-It uses k8s_facts Ansible role.
+It uses k8s_info Ansible role.
 
 #### Variables:
  - component_ns: A name of namespace' organization.
@@ -19,7 +19,7 @@ It uses k8s_facts Ansible role.
 
 ### 2. Check if Indy  auth job pod for stewards is completed
 This task is waiting until auth job of all stewards of organization are completed.
-It uses k8s_facts Ansible role.
+It uses k8s_info Ansible role.
 
 #### Variables:
  - component_ns: A name of namespace' organization.
@@ -34,7 +34,7 @@ It uses k8s_facts Ansible role.
  
 ### 3. Check if Indy  auth job pod for endorser is completed
 This task is waiting until auth job of all endorsers of organization are completed.
-It uses k8s_facts Ansible role.
+It uses k8s_info Ansible role.
 
 #### Variables:
  - component_ns: A name of namespace' organization.
@@ -50,7 +50,7 @@ It uses k8s_facts Ansible role.
 ### 4. Check if Indy  auth job pod for baf-ac is completed
 This task is waiting until auth job of all  organization baf-ac are completed.
 baf-ac is tag for read-only token, service account, auth methods and cluster role binding.
-It uses k8s_facts Ansible role.
+It uses k8s_info Ansible role.
 
 #### Variables:
  - component_ns: A name of namespace' organization.

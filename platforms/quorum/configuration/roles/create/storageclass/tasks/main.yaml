@@ -3,7 +3,7 @@
 #############################################################################################
 # Check storageclass exists already
 - name: Check if storageclass exists
-  k8s_facts:
+  k8s_info:
     kind: StorageClass
     name: "{{ storageclass_name }}"
     kubeconfig: "{{ kubernetes.config_file }}"

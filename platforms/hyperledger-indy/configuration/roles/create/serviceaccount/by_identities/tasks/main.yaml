@@ -4,7 +4,7 @@
 
 # Check service account exists already
 - name: Check if service account for {{ component_name }} exists
-  k8s_facts:
+  k8s_info:
     kind: ServiceAccount
     name: "{{ component_name }}"
     namespace: "{{ component_namespace }}"
@@ -22,7 +22,7 @@
 
 # Check cluster role binding
 - name : Check cluster role binding for {{ component_name }}
-  k8s_facts:
+  k8s_info:
     kind: ClusterRoleBinding
     name: "{{ component_name }}"
     namespace: "{{ component_namespace }}"

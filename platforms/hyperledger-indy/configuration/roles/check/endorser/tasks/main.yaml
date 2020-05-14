@@ -7,7 +7,7 @@
 - name: Check if endorser job pod is completed for organization {{ component_name }}
   vars:
     identity_name: "{{ endorserItem.name }}"
-  k8s_facts:
+  k8s_info:
     kind: Pod
     namespace: "{{ component_ns }}"
     kubeconfig: "{{ kubernetes.config_file }}"

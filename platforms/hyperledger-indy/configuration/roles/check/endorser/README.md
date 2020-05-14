@@ -4,7 +4,7 @@ This role is used for waiting to job of Endorser role creation finished.
 ## Tasks:
 ### 1. Check if endorser job pod is completed for organization {{ component_name }}
 This task is waiting until endorser job pod of organization are completed.
-It uses k8s_facts Ansible role.
+It uses k8s_info Ansible role.
 
 #### Variables:
  - endorserItem.name: A name of Endorser service.

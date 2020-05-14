@@ -4,7 +4,7 @@
 
 # Check if namespace created
 - name: Check namespace is created
-  k8s_facts:
+  k8s_info:
     kind: Namespace
     name: "{{ component_name }}"
     kubeconfig: "{{ kubernetes.config_file }}"

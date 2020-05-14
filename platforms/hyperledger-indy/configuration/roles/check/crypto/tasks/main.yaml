@@ -7,7 +7,7 @@
 - name: Check if Indy Key management pod for trustee is completed
   vars:
     identity_name: "{{ trusteeItem.name }}"
-  k8s_facts:
+  k8s_info:
     kind: Pod
     namespace: "{{ component_ns }}"
     kubeconfig: "{{ kubernetes.config_file }}"
@@ -29,7 +29,7 @@
 - name: Check if Indy Key management pod for stewards is completed
   vars:
     identity_name: "{{ stewardItem.name }}"
-  k8s_facts:
+  k8s_info:
     kind: Pod
     namespace: "{{ component_ns }}"
     kubeconfig: "{{ kubernetes.config_file }}"
@@ -51,7 +51,7 @@
 - name: Check if Indy Key management pod for endorser is completed
   vars:
     identity_name: "{{ endorserItem.name }}"
-  k8s_facts:
+  k8s_info:
     kind: Pod
     namespace: "{{ component_ns }}"
     kubeconfig: "{{ kubernetes.config_file }}"
