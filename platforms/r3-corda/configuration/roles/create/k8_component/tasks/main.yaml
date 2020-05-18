@@ -22,6 +22,11 @@
   vars:
     values_file: "{{ release_dir }}/{{ component_name }}/{{ component_type }}.yaml"
 
+- name: Create the {{ component_type }} on minikube cluster {{component_data.resources}}
+  shell: |
+    kubectl apply -f  {{ release_dir }}/{{ component_name }}/{{ component_type }}.yaml
+  # when: component_data.resources|length == 0
+
 ################################################################################################
 # This task tests the value file for syntax errors/ missing values
 # This is done by calling the helm_lint role and passing the value file parameter
